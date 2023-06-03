@@ -18,10 +18,10 @@ The application requires the following software installed on your machine. Other
 
 ## Code components
 
-- Router - it is responsible for persisting application paths and routing the traffic to the proper code component.
-- Handler - a piece of code that is responsible for mapping input data to a format friendly for Controllers.
-- Controller - a piece of code that keeps the business logic of the application.
-- Repository - handles sending queries to MySQL database.
+- `Router` - it is responsible for persisting application paths and routing the traffic to the proper code component.
+- `Handler` - a piece of code that is responsible for mapping input data to a format friendly for Controllers.
+- `Controller` - a piece of code that keeps the business logic of the application.
+- `Repository` - handles sending queries to MySQL database.
 
 ## Application diagram
 
