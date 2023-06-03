@@ -27,6 +27,7 @@ The application requires the following software installed on your machine. Other
 
 The boilerplate application structure looks as presented on the diagram below:
 
+```mermaid
 flowchart TB
     A(Actor) <---> B
 
@@ -41,6 +42,7 @@ flowchart TB
     subgraph Database container
         C[fa:fa-database MySQL Database] <---> B
     end
+```
 
 ## How to run
 
