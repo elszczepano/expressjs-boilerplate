@@ -58,4 +58,4 @@ flowchart TB
 
 ## Contribute
 
-If you want to contribute to the protect do not hesitate to create an issue or a pull request!
+If you want to contribute do not hesitate to create an issue or a pull request!
