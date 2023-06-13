@@ -1,25 +1,20 @@
 
-import mysql, { Connection, Query } from 'mysql';
+import mysql, { Connection } from 'mysql';
 
 import { IDriver } from './Driver';
-import { error } from 'console';
-import { resolve } from 'path';
-import { rejects } from 'assert';
 
 interface IDriverConfig {
     dbHost: string;
     dbUser: string;
     dbPassword: string;
     dbName: string;
-    dbPort: number
+    dbPort: number;
 }
 
 export default class MySQLDriver implements IDriver {
     private readonly _connection: Connection;
 
     private constructor( config: IDriverConfig ) {
-        console.log( config )
-
         this._connection = mysql.createConnection( {
             host: config.dbHost,
             user: config.dbUser,
@@ -52,6 +47,6 @@ export default class MySQLDriver implements IDriver {
 
                 resolve( results );
             } )
-        });
+        } );
     }
 }

@@ -7,8 +7,8 @@ interface IRequestParams {
     name: string;
 }
 
-export default class RootController implements IController {
-    public constructor( private readonly _repository: IExampleRepository ) { }
+export default class HelloController implements IController {
+    public constructor( private readonly _repository: IExampleRepository ) {}
 
     public async execute( request: Request<IRequestParams>, response: Response ): Promise<void> {
 

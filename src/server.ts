@@ -43,8 +43,11 @@ let driver: MySQLDriver | undefined;
     service.addRouter( '/', router );
 } )();
 
-process.on( 'SIGINT', async () => {
+
+[ 'SIGINT', 'SIGTERM', 'SIGQUIT' ].forEach( signal => process.on( signal, async () => {
     if ( driver ) {
         await driver.disconnect();
     }
-} );
+
+    process.exit();
+} ) );
