@@ -23,27 +23,6 @@ The application requires the following software installed on your machine. Other
 - `Repository` - handles sending queries to database.
 - `Driver` - abstraction that allows using various DB solutions without any changes on Repository level.
 
-## Application diagram
-
-The boilerplate application structure looks as presented on the diagram below:
-
-```mermaid
-flowchart TB
-    A(Actor) <---> B
-
-    subgraph Application container
-        B[Server]
-        
-        D[Feature 1] <---> B
-        E[Feature 2] <---> B
-        F[Feature 3] <---> B
-    end
-
-    subgraph Database container
-        C[fa:fa-database MySQL Database] <---> B
-    end
-```
-
 ## How to run
 
 1. Pull the repository - `git clone git@github.com:elszczepano/expressjs-boilerplate.git && cd expressjs-boilerplate`.
