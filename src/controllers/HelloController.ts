@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import { IController } from './Controller';
+import { IExampleRepository } from '../repositories/ExampleRepository';
 
 interface IRequestParams {
     name: string;
@@ -11,7 +12,7 @@ export default class RootController implements IController {
 
     public async execute( request: Request<IRequestParams>, response: Response ): Promise<void> {
 
-        const queryResult: IExampleResult = await this._repository.exampleQuery();
+        const queryResult: number = await this._repository.exampleQuery();
 
         response.json( { queryResult, name: request.params.name } );
     }

@@ -1,11 +1,10 @@
 
 import mysql, { Connection, Query } from 'mysql';
 
-interface IMySQLDriver {
-    query<T>( queryString: string ): Promise<T>;
-    connect(): Promise<void>;
-    disconnect(): Promise<void>;
-}
+import { IDriver } from './Driver';
+import { error } from 'console';
+import { resolve } from 'path';
+import { rejects } from 'assert';
 
 interface IDriverConfig {
     dbHost: string;
@@ -15,10 +14,12 @@ interface IDriverConfig {
     dbPort: number
 }
 
-export default class MySQLDriver implements IMySQLDriver {
+export default class MySQLDriver implements IDriver {
     private readonly _connection: Connection;
 
     private constructor( config: IDriverConfig ) {
+        console.log( config )
+
         this._connection = mysql.createConnection( {
             host: config.dbHost,
             user: config.dbUser,
@@ -30,8 +31,6 @@ export default class MySQLDriver implements IMySQLDriver {
 
     public static async create( config: IDriverConfig ): Promise<MySQLDriver> {
         const driver = new MySQLDriver( config );
-        
-        await driver.connect();
 
         return driver;
     }
@@ -45,8 +44,14 @@ export default class MySQLDriver implements IMySQLDriver {
     }
 
     public async query<T>( queryString: string ): Promise<T> {
-        const result: Query = await this._connection.query( queryString );
+        return new Promise( ( resolve, reject ) => {
+            this._connection.query( queryString, ( error, results ) => {
+                if ( error ) {
+                    reject( error );
+                };
 
-        return result as T;
+                resolve( results );
+            } )
+        });
     }
 }

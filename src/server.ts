@@ -2,7 +2,9 @@ import dotenv from 'dotenv';
 
 import Service from './Service';
 import Router from './Router';
-import MySQLDriver from './drivers/MySqlDriver';
+import MySQLDriver from './drivers/MySQLDriver';
+import ExampleRepository from './repositories/ExampleRepository';
+import HelloController from './controllers/HelloController';
 
 dotenv.config();
 
