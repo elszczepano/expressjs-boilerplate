@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "node dist/server.js",
-    "build": "tsc --build",
+    "build": "tsc --build && cp -r ./src/migrations/queries ./dist/migrations",
     "test": "exit 0"
   },
   "repository": {

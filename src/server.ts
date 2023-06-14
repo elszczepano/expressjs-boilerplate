@@ -5,6 +5,8 @@ import Router from './Router';
 import MySQLDriver from './drivers/MySQLDriver';
 import ExampleRepository from './repositories/ExampleRepository';
 import HelloController from './controllers/HelloController';
+import HelloHandler from './handlers/HelloHandler';
+import Migrator from './migrations/Migrator';
 
 dotenv.config();
 
@@ -26,16 +28,21 @@ let driver: MySQLDriver | undefined;
 
     console.log( 'DB connection established' );
 
+    const migrator: Migrator = new Migrator( driver );
+
+    await migrator.migrate();
+
     const repository = new ExampleRepository( driver );
 
     const helloController: HelloController = new HelloController( repository );
+    const helloHandler: HelloHandler = new HelloHandler( helloController );
 
     const router: Router = new Router(
         [
             {
                 method: 'get',
                 path: '/hello/:name',
-                controller: helloController
+                handler: helloHandler
             }
         ]
     );

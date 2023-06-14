@@ -1,19 +1,23 @@
-import { Request, Response } from 'express';
-
 import { IController } from './Controller';
 import { IExampleRepository } from '../repositories/ExampleRepository';
 
-interface IRequestParams {
+export interface IHelloParams {
     name: string;
 }
 
-export default class HelloController implements IController {
+export interface IHelloResults {
+    name: string;
+    guests: string[];
+}
+
+export default class HelloController implements IController<IHelloParams, IHelloResults> {
     public constructor( private readonly _repository: IExampleRepository ) {}
 
-    public async execute( request: Request<IRequestParams>, response: Response ): Promise<void> {
+    public async execute( params: IHelloParams ): Promise<IHelloResults> {
+        await this._repository.saveGuest( params.name );
 
-        const queryResult: number = await this._repository.exampleQuery();
+        const guests: string[] = await this._repository.getGuests();
 
-        response.json( { queryResult, name: request.params.name } );
+        return { guests, name: params.name };
     }
 }

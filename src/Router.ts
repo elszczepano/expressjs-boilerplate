@@ -1,12 +1,12 @@
 import { Router as ExpressRouter } from 'express';
 import bodyParser from 'body-parser';
 
-import { IController } from './controllers/Controller';
+import { IHandler } from './handlers/Handler';
 
 interface IRouteDefinition {
     method: 'get' | 'post' | 'put' | 'delete';
     path: string;
-    controller: IController;
+    handler: IHandler;
 }
 
 export default class Router {
@@ -15,18 +15,18 @@ export default class Router {
     public constructor( routes: IRouteDefinition[] = [] ) {
         this._router = ExpressRouter();
 
-        for ( const { method, path, controller } of routes ) {
+        for ( const { method, path, handler } of routes ) {
             if ( [ 'put', 'post' ].includes( method ) ) {
                 this._router[ method ](
                     path,
                     bodyParser.urlencoded( { extended: false } ),
-                    controller.execute.bind( controller )
+                    handler.process.bind( handler )
                 );
 
                 continue;
             }
 
-            this._router[ method ]( path, controller.execute.bind( controller ) );
+            this._router[ method ]( path, handler.process.bind( handler ) );
         }
     }
 

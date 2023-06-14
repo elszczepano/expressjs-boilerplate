@@ -17,8 +17,8 @@ services:
       interval: 5s
       timeout: 10s
       retries: 3
-    volumes:
-      - db:/var/lib/mysql
+    tmpfs:
+      - /var/lib/mysql
   express_boilerplate:
     build: .
     env_file: .env
