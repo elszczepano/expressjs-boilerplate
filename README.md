@@ -20,8 +20,10 @@ The application requires the following software installed on your machine. Other
 
 - `Router` - it is responsible for persisting application paths and routing the traffic to the proper code component.
 - `Controller` - a piece of code that keeps the logic of the application.
+- `Handler` - parses input data and handles sending a response.
 - `Repository` - handles sending queries to database.
 - `Driver` - abstraction that allows using various DB solutions without any changes on Repository level.
+- `Migrator` - sets up the database structure.
 
 ## How to run
 
