@@ -22,7 +22,7 @@ let driver: MySQLDriver | undefined;
 ( async () => {
     const service: Service = new Service( port );
 
-    driver = await MySQLDriver.create( { dbHost, dbUser, dbPassword, dbName, dbPort } );
+    driver = new MySQLDriver( { dbHost, dbUser, dbPassword, dbName, dbPort } );
 
     await driver.connect();
 

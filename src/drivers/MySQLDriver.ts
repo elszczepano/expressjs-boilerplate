@@ -14,7 +14,7 @@ interface IDriverConfig {
 export default class MySQLDriver implements IDriver {
     private readonly _connection: Connection;
 
-    private constructor( config: IDriverConfig ) {
+    public constructor( config: IDriverConfig ) {
         this._connection = mysql.createConnection( {
             host: config.dbHost,
             user: config.dbUser,
@@ -22,12 +22,6 @@ export default class MySQLDriver implements IDriver {
             database: config.dbName,
             port: config.dbPort
         } );
-    }
-
-    public static async create( config: IDriverConfig ): Promise<MySQLDriver> {
-        const driver = new MySQLDriver( config );
-
-        return driver;
     }
 
     public async connect(): Promise<void> {
