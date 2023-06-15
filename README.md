@@ -31,6 +31,12 @@ The application requires the following software installed on your machine. Other
 2. Start the application - `docker-compose up --build`. If you run the application for the first time, containers will need to be pulled or built.
 3. Visit `http://localhost:8000/hello` to confirm the application works correctly.
 
+## How to run tests
+
+1. Pull the repository - `git clone git@github.com:elszczepano/expressjs-boilerplate.git && cd expressjs-boilerplate`.
+2. Install dependencies - `pnpm install --filter ./`.
+3. Run tests - `npm test`.
+
 ## Contribute
 
 If you want to contribute do not hesitate to create an issue or a pull request!
