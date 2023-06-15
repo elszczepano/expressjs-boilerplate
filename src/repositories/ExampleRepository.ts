@@ -13,7 +13,7 @@ export default class ExampleRepository implements IExampleRepository {
     }
 
     public async getGuests(): Promise<string[]> {
-        const guests: {name: string; }[] = await this._driver.query( 'SELECT DISTINCT name FROM guests;' );
+        const guests: { name: string; }[] = await this._driver.query( 'SELECT DISTINCT name FROM guests;' );
 
         return guests.map( guest => guest.name );
     }

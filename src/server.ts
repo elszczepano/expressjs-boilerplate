@@ -32,7 +32,7 @@ let driver: MySQLDriver | undefined;
 
     await migrator.migrate();
 
-    const repository = new ExampleRepository( driver );
+    const repository: ExampleRepository = new ExampleRepository( driver );
 
     const helloController: HelloController = new HelloController( repository );
     const helloHandler: HelloHandler = new HelloHandler( helloController );

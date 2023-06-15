@@ -12,7 +12,7 @@ export default class Service {
         this._service.use( bodyParser.json() );
 
         this._service.listen( port, () => {
-            console.log( `Server is working on ${ port } port...` )
+            console.log( `Server is working on ${ port } port...` );
         } );
     }
 
