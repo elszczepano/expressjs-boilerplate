@@ -1,0 +1,7 @@
+node_modules
+tsconfig.tsbuildinfo
+dist
+dist-tests
+.env
+pnpm-lock.yaml
+.DS_Store

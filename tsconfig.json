@@ -1,0 +1,25 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "esModuleInterop": true,
+        "lib": [
+            "es2021",
+            "dom"
+        ],
+        "module": "commonjs",
+        "target": "es2021",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "noImplicitAny": true,
+        "composite": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}
