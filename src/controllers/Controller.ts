@@ -1,3 +1,3 @@
-export interface IController<TParams, TResponse> {
-    execute( params: TParams ): Promise<TResponse>;
+export interface IController<TParams, TResult> {
+    execute( params: TParams ): Promise<TResult>;
 }
